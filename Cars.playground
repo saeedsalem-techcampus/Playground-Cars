@@ -1,0 +1,47 @@
+import UIKit
+
+class Car{
+    var name:String!
+    var color:String!
+    var model:Int!
+    var used:Bool!
+    var price:Double!
+    
+    init(name:String,color:String,model:Int,used:Bool,price:Double) {
+        self.name = name
+        self.color = color
+        self.model = model
+        self.used = used
+        self.price = price
+    }
+    
+    public func priceIfUsed()->Double{
+        if(used)
+        {
+            return self.price - 2500
+        }else{
+            return self.price
+        }
+    }
+}
+
+var cars:[String] = []
+cars.append("camry")
+cars.append("accent")
+cars.append("civic")
+cars.append("bmw")
+var all_cars:[Car] = []
+for i in 0...cars.count-1{
+    var used = false
+    if(i==0 || i == 2)
+    {
+        used = true
+    }
+    all_cars.append(Car(name: cars[i], color: "red", model: 2000+i, used: used, price: 10000))
+}
+for x in all_cars{
+    print(x.name,terminator:" * ")
+    print(x.color,terminator:" * ")
+    print(x.model,terminator:" * ")
+    print(x.priceIfUsed())
+}
